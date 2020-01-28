@@ -13,7 +13,7 @@ TODO:
 NOTES:
     * A limit of 335000 seems to be around the maximum limit that KDP will take
 """
-import random, phrases
+import os, random, phrases
 
 class Book(object):
     """docstring for Book."""
@@ -34,6 +34,9 @@ class Book(object):
 
     def gen_volume(self):
         """generate volume"""
+        if not os.path.exists("output"):
+            os.makedirs("output")
+            print("Created directory: output/")
         output_file = open("output/vol{0}.html".format(self.volume_num), "w")
         book = ""
         real_length = 0
